@@ -41,7 +41,7 @@ class DiscordNotifier:
         if not self.configured:
             raise RuntimeError("DISCORD_WEBHOOK_URL 尚未正確設定。")
         content = (
-            "**RO 價格通知**\n"
+            "**價格通知**\n"
             f"道具：{item}\n"
             f"伺服器：{server}\n"
             f"類型：{store_type}\n"
@@ -63,4 +63,3 @@ class DiscordNotifier:
                     raise RuntimeError(f"Discord 回應 HTTP {response.status}。")
         except (HTTPError, URLError, TimeoutError) as exc:
             raise RuntimeError(f"Discord 通知失敗：{exc}") from exc
-

@@ -33,7 +33,7 @@ async function collectVisibleResults() {
   if (signature === lastSignature) return;
   lastSignature = signature;
   return chrome.runtime.sendMessage({
-    type: "RO_RESULTS",
+    type: "SHOP_RESULTS",
     keyword,
     server,
     storeType,

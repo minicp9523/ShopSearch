@@ -114,7 +114,7 @@ async function processResults(message) {
   }
 
   const content = [
-    "**RO 價格通知**",
+    "**價格通知**",
     "監控關鍵字：" + itemConfig.name,
     "伺服器：" + message.server,
     "類型：" + message.storeType,
@@ -132,7 +132,7 @@ async function processResults(message) {
 }
 
 chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
-  if (message?.type === "RO_RESULTS") {
+  if (message?.type === "SHOP_RESULTS") {
     processResults(message)
       .then(sendResponse)
       .catch(error => sendResponse({ ok: false, reason: error.message }));

@@ -107,7 +107,7 @@ def run_once(
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="RO 露天商店低頻查價工具")
+    parser = argparse.ArgumentParser(description="露天商店低頻查價工具")
     parser.add_argument("--once", action="store_true", help="只查詢佇列中的第一個項目")
     args = parser.parse_args()
     config = load_config()

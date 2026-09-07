@@ -110,7 +110,7 @@ document.querySelector("#test").addEventListener("click", async () => {
 async function sendToActiveTab(message) {
   const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
   if (!tab?.id || !tab.url?.startsWith("https://event.gnjoy.com.tw/Ro/RoShopSearch")) {
-    throw new Error("請先切換到 RO 露天商店查詢頁。");
+    throw new Error("請先切換到露天商店查詢頁。");
   }
   return chrome.tabs.sendMessage(tab.id, message);
 }

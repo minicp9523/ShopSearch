@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "RO 露天價格通知",
-  "version": "0.2.1",
-  "description": "讀取使用者手動查詢後顯示的 RO 露天商店結果，並依價格門檻發送 Discord 通知。",
+  "name": "露天價格通知",
+  "version": "0.2.2",
+  "description": "讀取使用者手動查詢後顯示的露天商店結果，並依價格門檻發送 Discord 通知。",
   "permissions": ["storage", "activeTab"],
   "host_permissions": [
     "https://event.gnjoy.com.tw/Ro/RoShopSearch*",
@@ -13,7 +13,7 @@
   ],
   "background": {"service_worker": "background.js"},
   "action": {
-    "default_title": "RO 露天價格通知",
+    "default_title": "露天價格通知",
     "default_popup": "popup.html"
   },
   "content_scripts": [{

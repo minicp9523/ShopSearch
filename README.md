@@ -1,34 +1,43 @@
-# RO 露天商店低頻查價工具
+# 露天商店價格通知
 
-這是一個人工驗證優先的 Playwright 工具：使用可見瀏覽器正常操作公開查詢頁，加入 SQLite 快取、去重、每日上限與 30–50 分鐘隨機間隔。它不會解答或繞過 CAPTCHA/Turnstile。
+這是一個 Microsoft Edge Manifest V3 擴充功能。使用者在露天商店查詢頁自行登入、完成 Cloudflare 驗證並啟動一輪查詢後，擴充功能會依監控清單逐項使用網站原生查詢操作，讀取頁面已顯示的結果，並在價格符合門檻時發送 Discord 通知。
 
-## 首次設定
+擴充功能不會解答或繞過 CAPTCHA／Turnstile，也不會儲存網站帳號密碼。網站重新要求驗證時，必須由使用者在頁面上親自完成。
 
-```powershell
-.\.venv\Scripts\Activate.ps1
-Copy-Item config.example.json config.json
-```
+## 安裝
 
-編輯 `config.json` 內的 `items`，每個項目包含道具名稱與 `max_price` 通知門檻。在專案根目錄建立 `.env`：
+1. 在 Edge 開啟 edge://extensions/。
+2. 開啟「開發人員模式」。
+3. 點選「載入解壓縮的擴充功能」。
+4. 選擇專案內的 edge-extension 資料夾。
+5. 將「露天價格通知」釘選在工具列。
 
-```dotenv
-DISCORD_WEBHOOK_URL=https://discord.com/api/webhooks/...
-```
+## 設定
 
-`.env` 已被 `.gitignore` 排除。首次執行可能需要在開啟的瀏覽器中手動登入或完成驗證。瀏覽器狀態儲存於 `data/browser-profile`。
+1. 點擊擴充功能圖示。
+2. 直接輸入 Discord Webhook URL，或使用「匯入 .env」選取本機設定檔。
+3. 設定伺服器、交易類型、商品間隔及通知冷卻時間。
+4. 新增監控道具與通知價格門檻。
+5. 按「儲存設定」。
+6. 可使用「發送 Discord 測試」確認 Webhook。
 
-## 先試跑一次
+Webhook、監控清單及冷卻紀錄會保存在目前 Edge 個人資料的擴充功能本機儲存空間。移除擴充功能、清除擴充功能資料、切換 Edge 個人資料或更換電腦後，需要重新設定。
 
-```powershell
-.\.venv\Scripts\python.exe main.py --once
-```
+## 使用
 
-## 啟動低頻輪詢
+1. 開啟露天商店查詢頁。
+2. 自行登入並完成 Cloudflare 驗證。
+3. 點擊擴充功能的「開始本輪查詢」。
+4. 擴充功能依清單逐項查詢；有資料時依設定等待，明確查無資料時立即進入下一件。
+5. 商品最低價小於或等於通知門檻時，Discord 會列出符合門檻的完整道具名稱、價格、商店與數量。
 
-```powershell
-.\.venv\Scripts\python.exe main.py
-```
+若網站要求新的 Cloudflare 驗證，擴充功能會顯示等待狀態。使用者完成驗證後才會繼續；遇到錯誤時可按「停止」結束本輪。
 
-結果儲存於 `data/prices.db`。遇到驗證逾時、限制頁或非預期錯誤時，程式會停止，不會密集重試。
+## 開發
 
-當最低販售價低於或等於 `max_price` 時，程式會發送 Discord 通知。同一道具預設有 30 分鐘冷卻；冷卻期內若出現更低價，仍會立即通知。
+修改 edge-extension 內的程式碼後：
+
+1. 到 edge://extensions/ 對擴充功能按「重新載入」。
+2. 重新整理露天商店查詢頁，讓新版 content script 生效。
+
+瀏覽器擴充功能不能自行讀取任意本機 .env。必須由使用者按「匯入 .env」並透過檔案選擇器明確選取。
