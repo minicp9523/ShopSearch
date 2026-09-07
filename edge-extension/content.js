@@ -165,7 +165,8 @@ async function runBatch(settings) {
         : (notification?.reason ? "；" + notification.reason : "");
       await publishStatus("完成 " + keyword + note);
       if (index < items.length - 1 && noData) {
-        await publishStatus("查無資料，立即查詢下一件。");
+        await publishStatus("查無資料，等待 1 秒後查詢下一件。");
+        await delay(1000);
       } else if (index < items.length - 1) {
         const seconds = Math.max(5, Number(settings.batchDelaySeconds || 10));
         await publishStatus("等待 " + seconds + " 秒後查詢下一件。");
