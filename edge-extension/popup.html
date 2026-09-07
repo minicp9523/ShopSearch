@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>RO 價格通知</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <main>
+    <h1>RO 價格通知</h1>
+    <div class="batch-actions top-actions">
+      <button id="startBatch" type="button">開始本輪查詢</button>
+      <button id="stopBatch" class="danger" type="button">停止</button>
+    </div>
+    <label>Discord Webhook URL
+      <input id="webhookUrl" type="password" autocomplete="off"
+             placeholder="https://discord.com/api/webhooks/...">
+    </label>
+    <div class="env-import">
+      <button id="importEnv" class="secondary compact" type="button">匯入 .env</button>
+      <input id="envFile" type="file" accept=".env,text/plain" hidden>
+    </div>
+    <label>通知冷卻（分鐘）
+      <input id="cooldownMinutes" type="number" min="1" value="30">
+    </label>
+    <div class="two-columns">
+      <label>伺服器
+        <select id="server">
+          <option value="波利">波利</option>
+          <option value="查爾斯">查爾斯</option>
+        </select>
+      </label>
+      <label>類型
+        <select id="storeType">
+          <option value="販售">販售</option>
+          <option value="收購">收購</option>
+          <option value="全部">全部</option>
+        </select>
+      </label>
+    </div>
+    <label>每件查詢間隔（秒）
+      <input id="batchDelaySeconds" type="number" min="5" value="10">
+    </label>
+    <h2>監控清單</h2>
+    <div id="items"></div>
+    <div class="actions">
+      <button id="addItem" type="button">新增道具</button>
+      <button id="save" type="button">儲存設定</button>
+    </div>
+    <button id="test" class="secondary" type="button">發送 Discord 測試</button>
+    <p id="status" role="status"></p>
+  </main>
+  <template id="itemTemplate">
+    <div class="item-row">
+      <input class="item-name" type="text" placeholder="道具名稱">
+      <input class="item-price" type="number" min="0" placeholder="價格門檻">
+      <button class="remove" type="button" title="移除">×</button>
+    </div>
+  </template>
+  <script src="popup.js"></script>
+</body>
+</html>

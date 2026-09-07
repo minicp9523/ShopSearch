@@ -1,0 +1,7 @@
+.venv/
+.playwright-browsers/
+data/
+config.json
+__pycache__/
+*.pyc
+.env

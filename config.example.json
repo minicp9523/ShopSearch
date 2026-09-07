@@ -1,0 +1,18 @@
+{
+  "server": "波利",
+  "store_type": "全部",
+  "history_days": 1,
+  "items": [
+    {
+      "name": "煙火卡片",
+      "max_price": 20000000
+    }
+  ],
+  "min_delay_minutes": 30,
+  "max_delay_minutes": 50,
+  "cache_ttl_minutes": 60,
+  "daily_query_limit": 24,
+  "notification_cooldown_minutes": 30,
+  "manual_verification_timeout_minutes": 10,
+  "headless": false
+}
