@@ -1,8 +1,4 @@
-const DEFAULT_ITEMS = [
-  { name: "煙火卡片", maxPrice: 20000000 },
-  { name: "影子精工戰靴", maxPrice: 20000000 },
-  { name: "防具強化原石(中級)", maxPrice: 30000 }
-];
+const DEFAULT_ITEMS = [];
 
 const itemsElement = document.querySelector("#items");
 const template = document.querySelector("#itemTemplate");
