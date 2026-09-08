@@ -121,6 +121,7 @@ document.querySelector("#startBatch").addEventListener("click", async () => {
     const { settings } = await chrome.storage.local.get(["settings"]);
     const response = await sendToActiveTab({ type: "START_BATCH", settings });
     setStatus(response?.reason || "本輪查詢已開始。");
+    if (response?.ok) window.close();
   } catch (error) {
     setStatus("無法開始：" + error.message);
   }
