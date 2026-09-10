@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "露天價格通知",
-  "version": "0.2.3",
+  "version": "0.2.6",
   "description": "讀取使用者手動查詢後顯示的露天商店結果，並依價格門檻發送 Discord 通知。",
   "permissions": ["storage", "activeTab"],
   "host_permissions": [

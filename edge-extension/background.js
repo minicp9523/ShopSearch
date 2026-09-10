@@ -116,9 +116,9 @@ async function processResults(message) {
   const content = [
     "**價格通知**",
     "監控關鍵字：" + itemConfig.name,
+    "最低價：" + best.price.toLocaleString("zh-TW") + " Z",
     "伺服器：" + message.server,
     "類型：" + message.storeType,
-    "最低價：" + best.price.toLocaleString("zh-TW") + " Z",
     "通知門檻：" + Number(itemConfig.maxPrice).toLocaleString("zh-TW") + " Z",
     "符合門檻的表格項目（" + matches.length + " 筆）：",
     ...listingLines

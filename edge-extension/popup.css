@@ -15,7 +15,7 @@ button.compact { width: auto; margin-top: 0; }
 button.remove { padding: 0; background: #bd3346; font-size: 18px; }
 .actions { display: flex; justify-content: space-between; gap: 8px; margin-top: 10px; }
 .two-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-.batch-actions { display: grid; grid-template-columns: 1fr 80px; gap: 8px; margin-top: 10px; }
+.batch-actions { display: grid; grid-template-columns: 80px 1fr; gap: 8px; margin-top: 10px; }
 .top-actions { margin: 0 0 14px; }
 button.danger { background: #bd3346; }
 #status { min-height: 18px; margin: 10px 0 0; font-size: 12px; color: #37506f; }
