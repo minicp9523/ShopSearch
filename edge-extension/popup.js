@@ -64,7 +64,7 @@ async function save() {
   const settings = {
     webhookUrl: normalizeWebhookUrl(document.querySelector("#webhookUrl").value),
     cooldownMinutes: Number(document.querySelector("#cooldownMinutes").value || 30),
-    batchDelaySeconds: Math.max(5, Number(document.querySelector("#batchDelaySeconds").value || 10)),
+    batchDelaySeconds: Math.max(1, Number(document.querySelector("#batchDelaySeconds").value || 10)),
     server: document.querySelector("#server").value,
     storeType: document.querySelector("#storeType").value,
     items
